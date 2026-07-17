@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سندس ❤️</title>
+
+<!-- Google Fonts: Cairo + Tajawal -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* Palette extracted from the photo: soft purples, lavenders, warm lilacs, and deep plum */
+    --mauve-light: #f3e9f9;  /* موف فاتح ناعم جداً للخلفيات */
+    --lavender-1:  #e0c3fc;  /* لافندر مشرق */
+    --lavender-2:  #cbb2fe;  /* لافندر أعمق قليلاً للتدريج */
+    --lilac-1:     #b993ec;  /* ليلكي رائع */
+    --lilac-2:     #8a5acf;  /* ليلكي غامق للعناصر البارزة */
+    --deep-plum:   #4a286d;  /* لون الخوخ الداكن جداً للنصوص والخطوط (متناسق مع خصلات الشعر الداكنة) */
+    --plum-text:   #341550;  /* لون النص الأساسي */
+    --cream-highlight: #fdf8ff; /* إضاءة بيضاء مائلة للموف */
+    --card-bg: rgba(253, 248, 255, 0.4); /* زجاجي متناسق مع درجات الموف */
+    --card-border: rgba(255, 255, 255, 0.6);
+  }
+
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  html, body{
+    height:100%;
+    width:100%;
+    overflow-x:hidden;
+  }
+
+  body{
+    font-family:'Tajawal', sans-serif;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    /* Soft warm purple & lavender animated gradient background */
+    background: linear-gradient(-45deg, var(--mauve-light), var(--lavender-1), var(--lavender-2), var(--lilac-1), var(--cream-highlight));
+    background-size: 400% 400%;
+    animation: gradientFlow 18s ease infinite;
+    padding: 30px 16px;
+  }
+
+  @keyframes gradientFlow{
+    0%{ background-position: 0% 50%; }
+    50%{ background-position: 100% 50%; }
+    100%{ background-position: 0% 50%; }
+  }
+
+  /* ---------- Floating hearts background ---------- */
+  .hearts-container{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:1;
+  }
+
+  .heart{
+    position:absolute;
+    bottom:-10%;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 22px;
+    opacity:0;
+    animation: floatUp linear infinite;
+    text-shadow: 0 0 8px rgba(185, 147, 236, 0.5);
+  }
+
+  @keyframes floatUp{
+    0%{
+      transform: translateY(0) translateX(0) rotate(0deg);
+      opacity:0;
+    }
+    10%{
+      opacity:0.9;
+    }
+    50%{
+      transform: translateY(-50vh) translateX(20px) rotate(15deg);
+    }
+    90%{
+      opacity:0.7;
+    }
+    100%{
+      transform: translateY(-110vh) translateX(-15px) rotate(-10deg);
+      opacity:0;
+    }
+  }
+
+  /* ---------- Glassmorphism Card ---------- */
+  .card{
+    position:relative;
+    z-index:2;
+    width:100%;
+    max-width: 900px;
+    display:flex;
+    flex-direction: row;
+    align-items:stretch;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 32px;
+    box-shadow: 0 25px 60px rgba(74, 40, 109, 0.15), 0 8px 20px rgba(74, 40, 109, 0.1);
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    overflow:hidden;
+    animation: cardAppear 1.2s ease-out;
+  }
+
+  @keyframes cardAppear{
+    from{ opacity:0; transform: translateY(30px) scale(0.97); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
+  }
+
+  /* ---------- Photo Section ---------- */
+  .photo-section{
+    flex: 0 0 40%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 45px 30px;
+    position:relative;
+  }
+
+  .photo-frame{
+    position:relative;
+    width: 230px;
+    height: 230px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* Glowing aura around the photo */
+  .photo-frame::before{
+    content:"";
+    position:absolute;
+    inset:-14px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(224, 195, 252, 0.9), rgba(138, 90, 207, 0.5), transparent 70%);
+    filter: blur(10px);
+    animation: glowPulse 3.5s ease-in-out infinite;
+    z-index:0;
+  }
+
+  @keyframes glowPulse{
+    0%, 100%{ transform: scale(1); opacity:0.85; }
+    50%{ transform: scale(1.08); opacity:1; }
+  }
+
+  .photo-frame img{
+    position:relative;
+    z-index:1;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+    border: 5px solid rgba(255,255,255,0.85);
+    box-shadow: 0 10px 35px rgba(74, 40, 109, 0.25);
+    transition: transform 0.6s ease;
+    cursor:pointer;
+  }
+
+  .photo-frame img:hover{
+    transform: scale(1.12);
+  }
+
+  /* ---------- Message Section ---------- */
+  .message-section{
+    flex: 1;
+    padding: 45px 40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+
+  .name-title{
+    font-family:'Cairo', sans-serif;
+    font-weight:900;
+    font-size: 3rem;
+    color: var(--deep-plum);
+    text-shadow: 0 2px 12px rgba(255,255,255,0.7);
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    position:relative;
+    display:inline-block;
+  }
+
+  .name-title::after{
+    content:"";
+    display:block;
+    width: 70px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--lilac-1), var(--lavender-1));
+    margin-top: 10px;
+  }
+
+  .message-text{
+    font-family:'Cairo', sans-serif;
+    font-weight:500;
+    font-size: 1.15rem;
+    line-height: 2.15;
+    color: var(--plum-text);
+    text-align: right;
+    letter-spacing: 0.2px;
+  }
+
+  /* Heartbeat animation for the emoji */
+  .heartbeat{
+    display:inline-block;
+    animation: heartbeat 1.6s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  @keyframes heartbeat{
+    0%   { transform: scale(1); }
+    14%  { transform: scale(1.25); }
+    28%  { transform: scale(1); }
+    42%  { transform: scale(1.2); }
+    70%  { transform: scale(1); }
+    100% { transform: scale(1); }
+  }
+
+  /* ---------- Responsive: stack vertically on mobile ---------- */
+  @media (max-width: 768px){
+    .card{
+      flex-direction: column;
+      border-radius: 26px;
+    }
+
+    .photo-section{
+      padding: 40px 20px 10px;
+    }
+
+    .photo-frame{
+      width: 190px;
+      height: 190px;
+    }
+
+    .message-section{
+      padding: 25px 26px 40px;
+      text-align:center;
+    }
+
+    .name-title{
+      font-size: 2.4rem;
+      text-align:center;
+      width:100%;
+    }
+
+    .name-title::after{
+      margin: 10px auto 0;
+    }
+
+    .message-text{
+      font-size: 1.02rem;
+      line-height: 2;
+      text-align: justify;
+    }
+  }
+
+  @media (max-width: 400px){
+    .name-title{ font-size: 2rem; }
+    .photo-frame{ width: 160px; height: 160px; }
+    .message-section{ padding: 20px 18px 34px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Floating hearts background layer -->
+  <div class="hearts-container" id="heartsContainer"></div>
+
+  <!-- Main glassmorphism card -->
+  <div class="card">
+
+    <!-- Section 1: Photo -->
+    <div class="photo-section">
+      <div class="photo-frame">
+        <img src="https://lh3.googleusercontent.com/d/1NM6v8VysWPzk_y4Z655aAwicCh4gtlMZ" alt="سندس">
+      </div>
+    </div>
+
+    <!-- Section 2: Message -->
+    <div class="message-section">
+      <h1 class="name-title">سندس</h1>
+      <p class="message-text">
+        سندس انتي مش مجرد حبيبه، انتي بجد كل حياتي، انتي الي بتهوني عليا كل مشاكلي بمجرد مابكلمك.
+        انتي بجد اكتر حاجه حلوه حصلتلي ف حياتي. أنا اسف لكل الي حصلك، دا مكنتش اتمني ف يوم من الايام
+        ان دا يحصل معاكي، بس أنا اسف، وأنا هعوضك عن حاجات كتير وحشه حصلتلك. ان شاء الله أنا هعمل
+        كل الي هقدر عليه عشان ابقي حاجه كبيره واجي اتقدملك. وبحبك موتتتتتتت يا اغلي حد انا عرفته
+        ف حياتي، واطيب شخص مر عليا، بجد بموت فيكي
+        <span class="heartbeat">❤️</span>
+      </p>
+    </div>
+
+  </div>
+
+<script>
+  // Generate floating hearts dynamically
+  const heartsContainer = document.getElementById('heartsContainer');
+  const heartSymbols = ['❤','💕','💗','💜','♡']; /* Added purple heart for matching theme */
+  const heartCount = 22;
+
+  for(let i = 0; i < heartCount; i++){
+    const heart = document.createElement('span');
+    heart.classList.add('heart');
+    heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+
+    const left = Math.random() * 100;
+    const size = 14 + Math.random() * 22;
+    const duration = 10 + Math.random() * 12;
+    const delay = Math.random() * 15;
+
+    heart.style.left = left + 'vw';
+    heart.style.fontSize = size + 'px';
+    heart.style.animationDuration = duration + 's';
+    heart.style.animationDelay = delay + 's';
+
+    heartsContainer.appendChild(heart);
+  }
+</script>
+
+</body>
+</html>
